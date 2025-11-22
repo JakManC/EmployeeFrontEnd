@@ -1,6 +1,12 @@
+import { data } from "react-router-dom";
 import { create } from "zustand";
 
 const useEmployeeStore = create((set) => ({
-  employeeArray: [{ id: 1, fName: "abc", fatherName: "def", surName: "xyz" }],
+  employeeArray: [],
+  addEmpIntoList: (empl) => {
+    set((state) => ({
+      employeeArray: [...state.employeeArray, empl],
+    }));
+  },
 }));
 export default useEmployeeStore;
