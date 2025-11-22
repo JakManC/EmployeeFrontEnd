@@ -3,7 +3,14 @@ import NavBar from "./NavBar";
 import useEmployeeStore from "../../employeeStore";
 
 function ListEmployee() {
+  const deleteEmployeeFromList = useEmployeeStore(
+    (state) => state.deleteEmployeeFromList
+  );
   const employeeArray = useEmployeeStore((state) => state.employeeArray);
+  const handleDelete = (indx) => {
+    console.log("Deleted Employee Index Is : ", indx);
+    deleteEmployeeFromList(indx);
+  };
   return (
     <div className="mainDiv">
       <div className="navDiv">
@@ -22,6 +29,7 @@ function ListEmployee() {
               <th className="border border-black p-2">First Name</th>
               <th className="border border-black p-2">Father Name</th>
               <th className="border border-black p-2">Surname</th>
+              <th className="border border-black p-2">DELETE</th>
             </tr>
           </thead>
 
@@ -33,7 +41,18 @@ function ListEmployee() {
                 <td className="border border-black p-2">
                   {employee.fatherName}
                 </td>
-                <td className="border border-black p-2">{employee.surName}</td>
+                <td className="border border-black p-2 text-center">
+                  {employee.surName}
+                </td>
+                <td className="border border-black p-2 text-center">
+                  {" "}
+                  <button
+                    className="bg-red-700 text-white p-2 m-2 justify-center items-center rounded-full "
+                    onClick={() => handleDelete(index)}
+                  >
+                    Dlt
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

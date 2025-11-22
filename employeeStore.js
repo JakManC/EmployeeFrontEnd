@@ -8,5 +8,11 @@ const useEmployeeStore = create((set) => ({
       employeeArray: [...state.employeeArray, empl],
     }));
   },
+  deleteEmployeeFromList: (indx) =>
+    set((state) => ({
+      employeeArray: state.employeeArray.filter(
+        (empl, index) => indx !== index
+      ),
+    })),
 }));
 export default useEmployeeStore;
