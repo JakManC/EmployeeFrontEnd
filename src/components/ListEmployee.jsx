@@ -15,13 +15,29 @@ function ListEmployee() {
           LIST OF EMPLOYEES ARE AS FOLLOWS..
         </h1>
 
-        <ul>
-          {employeeArray.map((employee) => (
-            <li key={employee.id}>
-              Name :{employee.fName} {employee.fatherName} {employee.surName}
-            </li>
-          ))}
-        </ul>
+        <table className="border border-black w-full mt-4">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border border-black p-2">ID</th>
+              <th className="border border-black p-2">First Name</th>
+              <th className="border border-black p-2">Father Name</th>
+              <th className="border border-black p-2">Surname</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {employeeArray.map((employee, index) => (
+              <tr key={index}>
+                <td className="border border-black p-2">{index + 1}</td>
+                <td className="border border-black p-2">{employee.fName}</td>
+                <td className="border border-black p-2">
+                  {employee.fatherName}
+                </td>
+                <td className="border border-black p-2">{employee.surName}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
